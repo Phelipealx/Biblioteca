@@ -1,0 +1,29 @@
+create table pessoa (
+	id serial not null,
+	nome character varying(40) not null,
+	cpf character(11) not null,
+
+	constraint pk_pessoa primary key (id)
+);
+
+create table livro (
+	id serial not null,
+	nome_livro character varying(40) not null,
+	autor character varying(40) not null,
+	editora character varying(40) not null,
+	id_pessoa int,
+
+	constraint pk_livro primary key (id),
+	constraint fk_livro_pessoa foreign key id_pessoa references pessoa(id)
+);
+
+insert into pessoa (nome, cpf)
+values  ('Phelipe', '11111111111'),
+	('Pedro', '22222222222'),
+	('Ana', '33333333333'),
+	('Melissa', '44444444444');
+
+insert into livro (nome_livro, autor, editora, id_pessoa)
+values  ('Sei la', 'João Ferreira', 'Abril'),
+	('Java', 'Samuel Roberto', 'Developer')
+	('Copos empilhados', 'Platico de Souza', 'É isso ai pessoal');
